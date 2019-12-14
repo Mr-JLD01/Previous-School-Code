@@ -1,2 +1,2 @@
-# Previous-School-Code
+# School-Code
 School coding projects
