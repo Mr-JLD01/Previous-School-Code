@@ -2,6 +2,7 @@
 /**
  * This is a base object class to create nodes to be used in heaps and binary trees
  * John Luke Denny
+ * 1/25/2020
  */
 public class Node
 {
