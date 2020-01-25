@@ -1,6 +1,8 @@
 
 /**
  * Creates a binary tree from either manually inserted nodes or an array
+ * John Luke Denny
+ * 1/25/2020
  */
 
 import java.util.*;
