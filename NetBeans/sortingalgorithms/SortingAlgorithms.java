@@ -193,6 +193,7 @@ public class SortingAlgorithms {
                 array[k] = right[j];
                 j++;
             }
+            k++;
         }
         
         while(i < l)
