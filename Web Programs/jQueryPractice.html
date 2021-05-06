@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Video Watcher</title>
+    <link rel="stylesheet" type="text/css" href="http://www.csc.lsu.edu/~qywang/CS6210/HTMLExercise/lecture16/bootstrap.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <h2 class="page-header">Best Videos Ever ?</h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="span3">
+          <ul>
+            <li><a href="https://www.youtube.com/watch?v=TddFnTB_7IM">Trip through the 80s</a></li>
+            <li><a href="https://www.youtube.com/watch?v=epUk3T2Kfno">Otters Holding Hands</a></li>
+            <li><a href="https://www.youtube.com/watch?v=il2IrgFHfsg">The Ooooh Cat</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id = "video" style="text-align: right">
+
+    </div>
+
+    <script type="text/javascript" src="http://www.csc.lsu.edu/~qywang/CS6210/HTMLExercise/lecture16/youtube.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+      var vidLinks = $('a');
+      for(let i = 0; i < vidLinks.length; i++){
+        var vid = $(vidLinks[i]);
+        var vidURL = vid.attr('href');
+        var thumbnailURL = youtube.generateThumbnailUrl(vidURL);
+        var thumbnailIMG = $("<img src='" +thumbnailURL+"'>");
+        vid.append(thumbnailIMG);
+        var clickVid = function(event){
+          event.preventDefault();
+          var video = youtube.generateEmbedUrl($(vidLinks[i]).attr("href"));
+          var vidWatcher = $("#video");
+          vidWatcher.html("<iframe src='"+video+"' height='315' width='560'></iframe>");
+        }
+        vid.on("click",clickVid);
+      }
+    </script>
+  </body>
+</html>

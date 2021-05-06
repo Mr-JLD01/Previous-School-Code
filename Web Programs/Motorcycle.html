@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <title>Motorcycle running</title>
+ </head>
+ <body>
+
+  <button id="start-button">Start</button>
+  <button id="speed-button">Go Faster!</button>
+  <button id="stop-button">Stop</button>
+  <div id="info"></div>
+
+  <img style="position:absolute; left: 0px; top: 80px;" src=" http://www.csc.lsu.edu/~qywang/CS6210/HTMLExercise/motorCycle.gif " id='motor'>
+
+  <script>
+      var startButton = document.getElementById("start-button");
+      var stopButton = document.getElementById("stop-button");
+      var goFaster = document.getElementById("speed-button");
+
+      var movePixels = 10;
+      var delayMs = 50;
+      var motorcyle = null;
+
+      function motorCycleRunning() {
+         var img = document.getElementById('motor');
+         var currentLeft = parseInt(img.style.left);
+         img.style.left = (currentLeft + movePixels) + 'px';
+         if (currentLeft > (window.innerWidth - img.width)) {
+            img.style.left = '0px';
+         }
+      }
+
+      function startRunning(event) {
+         startButton.disabled = true;
+         stopButton.disabled = false;
+         goFaster.disabled = false;
+         motorcyle = window.setInterval(motorCycleRunning, delayMs);
+      }
+
+      function stopRunning(event) {
+         startButton.disabled = false;
+         stopButton.disabled = true;
+         goFaster.disabled = true;
+         clearInterval(motorcyle);
+         movePixels = 10;
+      }
+
+      function faster(event) {
+         movePixels += 10;
+      }
+
+      startButton.addEventListener("click", startRunning);
+      stopButton.addEventListener("click", stopRunning);
+      goFaster.addEventListener("click", faster);
+  </script>
+
+ </body>
+</html
