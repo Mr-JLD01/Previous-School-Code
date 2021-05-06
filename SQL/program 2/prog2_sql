@@ -1,0 +1,83 @@
+select count(*) from movies;
+
+select count(*) from cast;
+
+#insert record
+insert into movies
+values (12345, "strangemovie", 0);
+
+#update record
+update movies
+set name = "badmovie"
+where movie_id = 12345;
+
+#delete record
+delete from movies
+where movie_id = 12345;
+
+#movies whose title contains “Warrior”
+select movie_id, name
+from movies
+where name like "%Warrior%";
+
+#cast members with exactly 4 movie appearances
+select cast_id, cast_name
+from cast
+group by cast_id
+having count(movie_id) = 4;
+
+#movies with score >80 and no cast members with name “David”
+select movies.movie_id, score
+from movies
+left join cast
+on movies.movie_id = cast.movie_id
+where score > 80
+and movies.movie_id not in (
+	select cast.movie_id
+	from cast
+	where cast_name like "%David%"
+	);
+
+#number of movies a cast member played in and the average movie scores. movies with score of 0 filtered out
+select cast.cast_id, cast.cast_name, count(cast.movie_id) as num_movies, avg(movies.score) as average_score
+from cast
+left join movies
+on cast.movie_id = movies.movie_id
+where movies.score > 0
+group by cast.cast_id
+order by cast.cast_name;
+
+#names of movies with scores higher than that of some movies containing “Chronicles”
+select movies.name
+from movies
+where movies.score > ( 
+	select min(m.score)
+	from movies as m
+	where m.name like "%Chronicles%"
+	);
+
+#cast pairs that have been in at least 4 movies together and each movie has a score >= 75
+create or replace view good_collaboration as 
+	select c1.cast_id as cast_member_id1, c2.cast_id as cast_member_id2, count(c1.movie_id) as num_movies, avg(movies.score) as avg_movie_score
+	from (cast as c1, cast as c2)
+	left join movies on c1.movie_id = movies.movie_id
+	where c1.movie_id = c2.movie_id
+	and c1.cast_id != c2.cast_id
+	and c1.cast_id not in (
+		select cast.cast_id
+		from cast
+		where c1.movie_id in (
+			select movies.movie_id
+			from movies
+			where movies.score < 75
+			)
+		)
+	group by c1.cast_id, c2.cast_id
+	having num_movies >= 4
+	order by avg_movie_score
+	;
+
+#
+select cast_member_id1, cast_member_id2, num_movies, avg_movie_score
+from good_collaboration
+order by avg_movie_score;
