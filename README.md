@@ -2,9 +2,8 @@
 School coding projects
 These are the coding assignments that I have done through my schooling
 
-C++ folder is from my dual enrollment class at Columbia State when I was a senior in high school
-JCreator folder is from my first year programming in my AP Computer Science class when I was a junior in high school
-NetBeans folder is from my CSC 1351 Labs [Java for Computer Science Majors II]
-BlueJ folder are the personal assignment I gave to myself based on what I learned in class as well as some CSC 3102[Advanced Algortims and Data Structures]
-MatLab folder is from my CSC 2262 class [Numerical Methods]
-C folder is from my CSC 3501 class [Computer Oragnization] it also includes some assembly
+They are organized by the language used. The only exception is Java. For Java, they are organized by the IDE used.
+The Java code in the JCreator branch is from my junior year of high school.
+The C++ code modified before 2021 are from my senior year of high school.
+  The update in 2020 was to give the program files meaningful names
+Everything else was done whilst I was in college at LSU/some basic personal code
