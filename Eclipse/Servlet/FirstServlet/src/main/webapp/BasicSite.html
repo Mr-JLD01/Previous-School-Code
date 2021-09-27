@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>CSC2610 Exercise</title>
+        <style>
+            h1, h2 {
+                color: darkgreen;
+            }
+
+            ul ul li {
+                color: red;
+                line-height: 2em;
+            }
+
+            .loc{
+                color: blue;
+                border-color: blue;
+            }
+
+            .topic{
+                color: purple;
+                border-color: purple;
+                text-align: center;
+            }
+
+            a.link {
+                font-weight: bold;
+            }
+
+            label, legend {
+                font-weight: bold;
+                color: darkred;
+            }
+
+            .fill {
+                background-color: lightblue;
+            }
+
+            p strong, p em {
+                text-decoration: underline;
+                font-size: 1.5em;
+            }
+
+            a:link {
+                color: blue;
+            }
+
+            a:visited {
+                color: lightblue;
+            }
+
+            a:hover {
+                color: orange;
+            }
+
+        </style>
+    </head>
+    <body>
+        <img src="https://www.math.lsu.edu/~siam/images/lsu-logo-gold.png" alt="LSU" style="width:200px">
+        <h1>About</h1>
+            <p>
+            Welcome to the <strong>Division of Computer Science and Electrical 	Engineering</strong> at LSU! The division resides in the newly formed School of Electrical Engineering and Computer Science (EECS) in the <em>College of Engineering</em>.
+            </p>
+            <h2>The location of our collaborators</h2>
+                <ul>
+                    <li>
+                    <p>USA</p>
+                    </li>
+                        <ul>
+                            <li>
+                            <a href="https://www.ny.gov/">New York</a>
+                            </li>
+                            <li>
+                            <a href="https://www.columbus.gov/">Columbus</a>
+                            </li>
+                            <li>
+                            <a href="https://www.austintexas.gov/">Austin</a>
+                            </li>
+                            <li>
+                            <a href="https://www.phila.gov/">Philly</a>
+                            </li>
+                        </ul>
+                    <li>
+                    <p>World</p>
+                    </li>
+                        <ul>
+                            <li>
+                            <a href="https://ottawa.ca/en">Ottawa</a>
+                            </li>
+                            <li>
+                            <a href="https://www.cityofsydney.nsw.gov.au/">Sydney</a>
+                            </li>
+                        </ul>
+                </ul>
+            <h2>Upcoming Classes</h2>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th id="loc">Location</th>
+                            <th id="topic">Topic</th>
+                        </tr>
+                    <tbody>
+                        <tr>
+                            <td class="loc">New York</td>
+                            <td class="topic">JavaScript & jQuery</td>
+                        </tr>
+                        <tr>
+                            <td class="loc">San Francisco</td>
+                            <td class="topic">HTML & CSS</td>
+                        </tr>
+                </table>
+            <h2>Sign Up!</h2>
+            <form action="http://18.220.181.111/FirstServlet/Homework2Servlet" method="post">
+                <label>Name:
+                    <input type="text" name="name" class="fill">
+                </label>
+                <br>
+                <label>Email:
+                    <input type="email" name="email" class="fill">
+                </label>
+                <br>
+                <label for="loc">Location:</label>
+                <select name="loc" id="loc">
+                    <option value="San Fransisco">San Fransisco</option>
+                    <option value="New York">New York</option>
+                </select>
+                <br>
+                <fieldset>
+                    <legend>Gender:</legend>
+                    <label for="Female">Female</label>
+                    <input type="radio" name="gender" id="Female" value="F">
+                    <label for="Male">Male</label>
+                    <input type="radio" name="gender" id="Male" value="M">
+                </fieldset>
+                <br>
+                <label for="exp">Experience:<br></label>
+                <textarea name="exp" id="exp"></textarea>
+                <br>
+                <button type="submit">Sign Up</button>
+            </form>
+            <br>
+            <p>
+                <br>
+                <a href="https://twitter.com/home" class="link">Twitter</a> |
+                <a href="https://www.facebook.com/" class="link">Facebook</a> |
+                <a href="https://www.flickr.com/explore" class="link">Flickr</a>
+            </p>
+            
+		<h2>User information retrieve</h2>
+			<form action="http://18.220.181.111/FirstServlet/Homework2ServletRetrieve" method="post">
+				<label>Name:
+                    <input type="text" name="name" class="fill">
+                </label>
+				<button type="submit">retrieve</button>
+			</form>
+    </body>
+</html>
