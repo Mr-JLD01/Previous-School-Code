@@ -3,59 +3,59 @@ select count(*) from movies;
 select count(*) from cast;
 
 #add record to table
-insert into movies 
+insert into movies
 values (54321, 'greatmovie', 5);
 
 #change name of record
-update movies 
-set name='goodmovie' 
+update movies
+set name='goodmovie'
 where movie_id=54321;
 
 #remove record
-delete from movies 
+delete from movies
 where movie_id=54321;
 
 #movies whose title starts with “The Private”
-select movie_id, name 
-from movies 
-where name regexp '^\"The Private' 
+select movie_id, name
+from movies
+where name regexp '^\"The Private'
 order by movie_id, name;
 
 #movies with score >80, sorted by score in descending order
-select name, score 
-from movies 
-where score>80 
+select name, score
+from movies
+where score>80
 order by score desc;
 
 #the number of movies with score >80
-select count(*) 
-from movies 
+select count(*)
+from movies
 where score>80;
 
 #the number of distinct movies a cast member played in
-select cast_id, count(distinct movie_id) as num_movies 
-from cast 
-group by cast_id 
+select cast_id, count(distinct movie_id) as num_movies
+from cast
+group by cast_id
 order by num_movies;
 
 #the number of distinct casts for each movie
-select movie_id, count(distinct cast_id) as num_casts 
-from cast 
-group by movie_id 
+select movie_id, count(distinct cast_id) as num_casts
+from cast
+group by movie_id
 order by num_casts;
 
 #movies with a distinct cast larger than 30
-select movie_id, count(distinct cast_id) as num_casts 
-from cast 
-group by movie_id 
-having num_casts>30 
+select movie_id, count(distinct cast_id) as num_casts
+from cast
+group by movie_id
+having num_casts>30
 order by num_casts;
 
-#movies that both ‘Tom Hanks’ and `Brad Pitt’ appear in
-select movie_id 
-from cast 
-where cast_name='\"Tom Hanks\"' 
-intersect 
-select movie_id 
-from cast 
-where cast_name='\"Brad Pitt\"'; 
+#movies that both 'Tom Hanks' and 'Brad Pitt' appear in
+select movie_id
+from cast
+where cast_name='\"Tom Hanks\"'
+intersect
+select movie_id
+from cast
+where cast_name='\"Brad Pitt\"';
