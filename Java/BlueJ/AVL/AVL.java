@@ -9,9 +9,9 @@ import java.lang.*;
           */
 public class AVL{
     public static void main(String[] args) throws FileNotFoundException {
-        
-        
-        File inFile = new File("inputFile.txt");//new File(args[0]);
+
+
+        File inFile = new File("./inputFile.txt");
         Scanner in = new Scanner(inFile);
         int numInstruct = in.nextInt();
 
@@ -21,19 +21,19 @@ public class AVL{
 
         Node root = new Node(num1, num2);
         Tree tree = new Tree(root);
-    
+
         for (int i = 2; i <= numInstruct; i++) {
             command = in.next();
             if(command.equals("IN")) {
                 num1 = in.nextInt();
                 num2 = in.nextInt();
-                tree.insert(root, new Node(num1, num2)); 
+                tree.insert(root, new Node(num1, num2));
             }
             else if(command.equals("RM")){
                 int min = 9999999;
                 num1 = in.nextInt();
-                num2 = in.nextInt(); 
-                
+                num2 = in.nextInt();
+
                 System.out.println("" + tree.RangeMinData((tree.root), num1, num2, min));
             }
         }
@@ -56,14 +56,14 @@ public class AVL{
         public Tree(Node rt){
             root = rt;
         }
-    void recalcHeight(Node x) 
+    void recalcHeight(Node x)
     {
         if (x == null){}
-        else if (x.left == null && x.right == null) 
+        else if (x.left == null && x.right == null)
         {
             x.height = 1;
         }
-        else 
+        else
         {
             recalcHeight(x.left);
             recalcHeight(x.right);
@@ -86,38 +86,38 @@ public class AVL{
         {
             return (a > b) ? a:b;
         }
-        Node rotateRight(Node y) 
-        { 
+        Node rotateRight(Node y)
+        {
             Node x = y.left;
             Node z = x.right;
-            
+
             x.right = y;
             y.left = z;
-            
+
             recalcHeight(x);
             recalcHeight(y);
-            
-            return x; 
-        } 
-        Node rotateLeft(Node x) 
-        { 
+
+            return x;
+        }
+        Node rotateLeft(Node x)
+        {
             Node y = x.right;
             Node z = y.left;
-            
+
             y.left = x;
             x.right = z;
-            
+
             recalcHeight(x);
             recalcHeight(y);
-            
-            return y; 
-        } 
+
+            return y;
+        }
         int getBalance(Node x)
         {
             if(x == null)
                 return 0;
             else if((x.right != null) && (x.left != null))
-                return x.left.height - x.right.height; 
+                return x.left.height - x.right.height;
             else if (x.right != null)
                 return x.right.height;
             else if(x.left != null)
@@ -125,63 +125,63 @@ public class AVL{
             else
                 return 1;
         }
-        static void insert(Node x, Node z) 
+        static void insert(Node x, Node z)
         {
             if (x.key > z.key) {
                 if (x.left != null) {
                     insert(x.left, z);
                 }
-                else 
+                else
                 {
                     x.left = z;
                 }
             }
-            else if (x.key < z.key) 
+            else if (x.key < z.key)
             {
-                if (x.right != null) 
+                if (x.right != null)
                 {
                     insert(x.right, z);
                 }
-                else 
+                else
                 {
                     x.right = z;
                 }
             }
         }
-        int RangeMinData(Node x, int k1, int k2, int minimum) 
-        {      
+        int RangeMinData(Node x, int k1, int k2, int minimum)
+        {
         if (x == null)
             return 9999999;
-        else if(!(x.key <= k2 && x.key >= k1)) 
+        else if(!(x.key <= k2 && x.key >= k1))
         {
             if(x.left != null && x.key > k2){
-                
+
                 minimum = RangeMinData(x.left, k1, k2, minimum);
             }
             else if(x.right != null && x.key < k1){
-                
+
                 minimum = RangeMinData(x.right, k1, k2, minimum);
             }
         }
-        else 
+        else
         {
             if(x.left == null && x.right == null)
                 minimum = x.data;
             else{
             int lmin = RangeMinData(x.left, k1, k2, minimum);
             int rmin = RangeMinData(x.right, k1, k2, minimum);
- 
+
             minimum = Math.min(x.data, Math.min(lmin, rmin));
-            }   
+            }
         }
         return minimum;
     }
-        void inorder(Node x) 
-        { 
-            if(x == null) 
+        void inorder(Node x)
+        {
+            if(x == null)
                 return;
-            inorder(x.left); 
-            System.out.print("(" + x.key + "," + x.data +")"); 
-            inorder(x.right); 
-        } 
+            inorder(x.left);
+            System.out.print("(" + x.key + "," + x.data +")");
+            inorder(x.right);
+        }
     }

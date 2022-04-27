@@ -1,0 +1,7 @@
+# compiled files
+.class
+.o
+__pychache__
+
+# launch config
+launch.json
