@@ -1,0 +1,1 @@
+main(){int d=0;for(int i=1;i<56;)d=i++%11?i%2?88:32:10,putchar(d);}
