@@ -5,3 +5,6 @@ __pychache__
 
 # launch config
 launch.json
+
+#Mac specific BS
+.DS_Store
