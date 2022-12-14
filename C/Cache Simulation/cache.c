@@ -40,6 +40,8 @@ int main() {
                 assert(scanf("%d", &input) == 1);
                 uc = (unsigned char)input;
                 res = check_cache(cache, uc);
+                //debug print
+                printf("res == %x\n", res);
                 if(res == 0xFF)
                         printf("cache MISS for address 0x%x\n", uc);
                 else
