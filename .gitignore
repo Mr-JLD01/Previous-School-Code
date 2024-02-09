@@ -1,10 +1,14 @@
 # compiled files
-.class
-.o
-__pychache__
+*.class
+*.o
+*.__pychache__
+*.pyc
 
 # launch config
 launch.json
+
+# Java extra files
+.project
 
 #Mac specific BS
 .DS_Store
